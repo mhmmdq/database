@@ -1,0 +1,21 @@
+{
+    "name": "mhmmdq/database",
+    "description": "A php class for managing and connecting to a database",
+    "keywords": ["database", "query builder" ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mhmmdqasemi",
+            "email": "mhmdqasemi81@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":{
+            "Mhmmdq\\": "src/mhmmdq"
+        }
+    },
+    "require": {
+        "php": ">=5.5"
+    }
+}
