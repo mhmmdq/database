@@ -415,7 +415,7 @@ class QueryBuilder  {
      */
     public function count() {
         $this->query = "SELECT COUNT(*) FROM {$this->from}";
-        return $this->toArray()["gitCOUNT(*)"];
+        return $this->toArray()["COUNT(*)"];
     }
     /**
      * @param $column
