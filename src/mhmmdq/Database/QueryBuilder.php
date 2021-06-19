@@ -4,6 +4,7 @@ namespace Mhmmdq\Database;
 
 use Mhmmdq\Database\Connection;
 use PDO,PDOException;
+use  Exception;
 class QueryBuilder  {
     /**
      * @var null
@@ -48,6 +49,10 @@ class QueryBuilder  {
         'totalRows'=>null
     ];
     /**
+     * @var int
+     */
+    protected $QueryRowCount = null;
+    /**
      * @var array
      */
     protected $queryVlaues = array();
@@ -58,6 +63,19 @@ class QueryBuilder  {
     {
         $this->con = Connection::getConnection();
     }
+    public function __call($name, $arguments)
+    {
+        switch ($name) {
+            case 'rowCount':
+                    return !empty($this->QueryRowCount) ? $this->QueryRowCount : false;
+                    $this->QueryRowCount = null;
+                break;
+            default:
+                    throw new Exception("Fatal error: Uncaught Error: Call to undefined method Mhmmdq\Database\QueryBuilder::{$name}");
+                break;
+        }
+    }
+
     /**
      * @param $table
      * @return $this
@@ -354,10 +372,10 @@ class QueryBuilder  {
             if($action == 'get') {
                 if($sth->rowCount() > 1) {
                     $result = $sth->fetchAll();
-                    $result['rowCount'] = $sth->rowCount();
+                    $this->QueryRowCount = $sth->rowCount();
                 }elseif ($sth->rowCount() == 1) {
                     $result = $sth->fetch();
-                    $result['rowCount'] = $sth->rowCount();
+                    $this->QueryRowCount = $sth->rowCount();
                 }else{
                     $result = null;
                 }
@@ -396,8 +414,8 @@ class QueryBuilder  {
      * @return mixed
      */
     public function count() {
-        $this->query = "SELECT COUNT({$this->primaryKey}) FROM {$this->from}";
-        return $this->toArray()["COUNT({$this->primaryKey})"];
+        $this->query = "SELECT COUNT(*) FROM {$this->from}";
+        return $this->toArray()["gitCOUNT(*)"];
     }
     /**
      * @param $column
