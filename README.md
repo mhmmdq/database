@@ -85,7 +85,7 @@ var_dump($users);
 The number of all output rows is available as follows
 ```php
 $users = $db->table('users')->get();
-echo $users->rowCount;
+echo $db->rowCount();
 ```
 #### Select custom column names
 You can output from any column you just need to use the `select` method
