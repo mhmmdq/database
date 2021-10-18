@@ -585,4 +585,14 @@ class QueryBuilder  {
     public function getQeury() {
         return !empty($this->query) ? $this->query : $this->lastQuery;
     }
+    /**
+     * Undocumented function
+     *
+     * @param string $query
+     *
+     */
+    public function query($query) {
+        $this->query = $query;
+        return $this->get();
+    }
 }
