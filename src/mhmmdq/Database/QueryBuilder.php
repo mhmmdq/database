@@ -458,11 +458,11 @@ class QueryBuilder  {
         $q = $this->query;
         $this->pagination['totalPage'] = round($this->count() / $limit);
         $this->query = $q;
-        if(isset($_GET['page'])){
-            if($_GET['page'] <= $this->pagination['totalPage'] && $_GET['page'] > 0)
+        if(isset($_GET['p'])){
+            if($_GET['p'] <= $this->pagination['totalPage'] && $_GET['p'] > 0)
             {
-                $this->pagination['currentPage'] = $_GET['page'];
-                $page = ($_GET['page'] - 1) * $limit;
+                $this->pagination['currentPage'] = $_GET['p'];
+                $page = ($_GET['p'] - 1) * $limit;
             }else {
                 $this->NotFound();
             }
