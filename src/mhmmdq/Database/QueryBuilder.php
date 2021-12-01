@@ -495,52 +495,52 @@ class QueryBuilder  {
         $previousPage =  $currentPage - 1;
 
         if($previousPage != 0)
-            $output .= "<li class='{$classList['li']}'><a href='?page={$previousPage}' class='{$classList['a']}'>&laquo;</a></li>";
+            $output .= "<li class='{$classList['li']}'><a href='?p={$previousPage}' class='{$classList['a']}'>&laquo;</a></li>";
 
         if($totalPage <= ($linksNumber + 2)) {
             for($i=1;$i<=$totalPage;$i++) {
                 $is_active = ($i == $currentPage) ? $classList['li:active'] : null;
-                $output .= "<li class='{$classList['li']} {$is_active}'><a href='?page={$i}' class='{$classList['a']}'>{$i}</a></li>";
+                $output .= "<li class='{$classList['li']} {$is_active}'><a href='?p={$i}' class='{$classList['a']}'>{$i}</a></li>";
             }
         }else {
             if($currentPage < $linksNumber) {
                 for ($i = 1; $i <= $linksNumber ; $i++) {
                     $is_active = ($i == $currentPage) ? $classList['li:active'] : null;
-                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?page={$i}' class='{$classList['a']}'>{$i}</a></li>";
+                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?p={$i}' class='{$classList['a']}'>{$i}</a></li>";
                 }
                 $output .= "<li class='{$classList['li']}'><a class='{$classList['a']}'><span>...</span></a></li>";
-                $output .= "<li class='{$classList['li']}'><a href='?page={$totalPage}' class='{$classList['a']}'>{$totalPage}</a></li>";
+                $output .= "<li class='{$classList['li']}'><a href='?p={$totalPage}' class='{$classList['a']}'>{$totalPage}</a></li>";
 
 
             }
             if($currentPage >= $linksNumber && $currentPage < ($totalPage - $linksNumber)) {
-                $output .= "<li class='{$classList['li']} '><a href='?page=1' class='{$classList['a']}'>1</a></li>";
+                $output .= "<li class='{$classList['li']} '><a href='?p=1' class='{$classList['a']}'>1</a></li>";
                 $output .= "<li class='{$classList['li']}'><a class='{$classList['a']}'><span>...</span></a></li>";
 
                 for($i = -1 ; $i <= $linksNumber-4;$i++) {
                     $page = ($currentPage + $i);
                     $is_active = ($page == $currentPage) ? $classList['li:active'] : null;
-                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?page={$page}' class='{$classList['a']}'>{$page}</a></li>";
+                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?p={$page}' class='{$classList['a']}'>{$page}</a></li>";
 
                 }
                 $output .= "<li class='{$classList['li']}'><a class='{$classList['a']}'><span>...</span></a></li>";
 
-                $output .= "<li class='{$classList['li']} '><a href='?page={$totalPage}' class='{$classList['a']}'>{$totalPage}</a></li>";
+                $output .= "<li class='{$classList['li']} '><a href='?p={$totalPage}' class='{$classList['a']}'>{$totalPage}</a></li>";
             }
             if(($totalPage - $currentPage) <= $linksNumber){
-                $output .= "<li class='{$classList['li']} '><a href='?page=1' class='{$classList['a']}'>1</a></li>";
+                $output .= "<li class='{$classList['li']} '><a href='?p=1' class='{$classList['a']}'>1</a></li>";
                 $output .= "<li class='{$classList['li']}'><a class='{$classList['a']}'><span>...</span></a></li>";
                 $page = $totalPage - ($totalPage - $linksNumber);
                 for($i = $linksNumber;$i >= 0 ;$i--) {
                     $page = $totalPage - $i;
                     $is_active = ($page == $currentPage) ? $classList['li:active'] : null;
-                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?page={$page}' class='{$classList['a']}'>{$page}</a></li>";
+                    $output .= "<li class='{$classList['li']} {$is_active}'><a href='?p={$page}' class='{$classList['a']}'>{$page}</a></li>";
                 }
             }
         }
 
         if($nextPage <= $totalPage)
-            $output .= "<li class='{$classList['li']}'><a href='?page={$nextPage}' class='{$classList['a']}'>&raquo;</a></li>";
+            $output .= "<li class='{$classList['li']}'><a href='?p={$nextPage}' class='{$classList['a']}'>&raquo;</a></li>";
 
 
         $output .= "</ul></nav>";
