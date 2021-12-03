@@ -188,7 +188,7 @@ Follow the steps below to paginate
 $users = $db->table('users')->pagination(5)->get()
 ```
 In this way, 5 users are displayed on each page
-Note that after enabling this feature, `$ _GET ['page']` is used by the class to identify the current page
+Note that after enabling this feature, `$ _GET ['p']` is used by the class to identify the current page
 ###### Get links to pages
 In the simplest way possible, just print
 ```php
